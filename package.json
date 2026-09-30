@@ -1,0 +1,53 @@
+{
+  "name": "mdrop",
+  "version": "1.2.2",
+  "description": "Обмен файлами и заметками между компьютером и телефоном по Wi-Fi",
+  "main": "electron-main.js",
+  "author": "Matvey",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/*.test.js",
+    "app": "electron .",
+    "icon": "node scripts/make-icon.js",
+    "dist": "electron-builder --win"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "build": {
+    "appId": "ru.matvey.mdrop",
+    "productName": "mDrop",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron-main.js",
+      "server.js",
+      "network.js",
+      "public/**/*",
+      "build/icon.png"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "shortcutName": "mDrop"
+    }
+  },
+  "devDependencies": {
+    "electron": "^42.4.0",
+    "electron-builder": "^26.15.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matveykotsuba/mDROP.git"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}
